@@ -1,0 +1,32 @@
+CODE 3
+Tech number
+logic: A number with an even number of digits that can be split into two parts, and the square of their sum equals the number.
+code
+import java.util.Scanner;
+
+public class TechNumber {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int number = sc.nextInt();
+        
+        if (isTechNumber(number)) {
+            System.out.println(number + " is a Tech Number.");
+        } else {
+            System.out.println(number + " is not a Tech Number.");
+        }
+    }
+
+    public static boolean isTechNumber(int number) {
+        String numStr = Integer.toString(number);
+        if (numStr.length() % 2 != 0) {
+            return false;
+        }
+        int mid = numStr.length() / 2;
+        int firstPart = Integer.parseInt(numStr.substring(0, mid));
+        int secondPart = Integer.parseInt(numStr.substring(mid));
+        int sum = firstPart + secondPart;
+        return (sum * sum == number);
+    }
+}
+  
