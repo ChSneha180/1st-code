@@ -1,0 +1,26 @@
+HARSHAD NUMBER
+logic: A number divisble by the sum of its digit.
+code
+import java.util.Scanner;
+public class HarshadNumber {
+    public static boolean isHarshad(int num) {
+        int originalNum = num;
+        int sumOfDigits = 0;
+        while (num > 0) {
+            sumOfDigits += num % 10;
+            num /= 10;
+        }
+        return originalNum % sumOfDigits == 0;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number to check if it's a Harshad number: ");
+        int num = sc.nextInt();
+        if (isHarshad(num)) {
+            System.out.println(num + " is a Harshad number.");
+        } else {
+            System.out.println(num + " is not a Harshad number.");
+        }
+    }
+}
