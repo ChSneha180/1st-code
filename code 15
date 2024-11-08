@@ -1,0 +1,26 @@
+NIVEN NUMBER
+logic: A number divisible by the sum of its digit.
+code
+import java.util.Scanner;
+public class NivendNumber {
+    public static boolean isNiven(int num) {
+        int originalNum = num;
+        int sumOfDigits = 0;
+        while (num > 0) {
+            sumOfDigits += num % 10;
+            num /= 10;
+        }
+        return originalNum % sumOfDigits == 0;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number to check if it's a niven number: ");
+        int num = sc.nextInt();
+        if (isNiven(num)) {
+            System.out.println(num + " is a niven number.");
+        } else {
+            System.out.println(num + " is not a niven number.");
+        }
+    }
+}
