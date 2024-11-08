@@ -1,0 +1,37 @@
+BOUNCY NUMBER
+logic: A number whose digits are neither entirely increasing nor entirely decreasing.
+  code
+ import java.util.Scanner;
+public class BouncyNumber {
+    public static boolean isBouncy(int num) {
+        if (num < 100) {
+            return false;
+        }
+        String strNum = Integer.toString(num);
+
+        boolean isIncreasing = false;
+        boolean isDecreasing = false;
+        for (int i = 1; i < strNum.length(); i++) {
+            if (strNum.charAt(i) > strNum.charAt(i - 1)) {
+                isIncreasing = true;
+            } else if (strNum.charAt(i) < strNum.charAt(i - 1)) {
+                isDecreasing = true;
+            }
+            if (isIncreasing && isDecreasing) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number to check if it's a Bouncy number: ");
+        int num = sc.nextInt();
+        if (isBouncy(num)) {
+            System.out.println(num + " is a Bouncy number.");
+        } else {
+            System.out.println(num + " is not a Bouncy number.");
+        }
+    }
+}
