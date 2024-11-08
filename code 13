@@ -1,0 +1,36 @@
+HARSHAD MAGIC NUMBER
+logic: A harshad number where the sum of the digits,when repeatedly added equals 1.
+code
+import java.util.Scanner;
+public class HarshadMagicNumber {
+    public static int sumOfDigits(int num) {
+        int sum = 0;
+        while (num > 0) {
+            sum += num % 10; 
+            num /= 10;  
+        }
+        return sum;
+    }
+    public static boolean isHarshadMagic(int num) {
+        int originalNum = num;
+        int sumOfDigits = sumOfDigits(num);
+        if (originalNum % sumOfDigits != 0) {
+            return false;
+        }
+        while (sumOfDigits >= 10) {
+            sumOfDigits = sumOfDigits(sumOfDigits);
+        }
+        return sumOfDigits == 1;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number to check if it's a Harshad Magic number: ");
+        int num = sc.nextInt();
+        if (isHarshadMagic(num)) {
+            System.out.println(num + " is a Harshad Magic number.");
+        } else {
+            System.out.println(num + " is not a Harshad Magic number.");
+        }
+    }
+}
